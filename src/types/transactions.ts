@@ -27,3 +27,8 @@ export type Transaction = {
   status: TransactionStatus;
   data?: TransactionData;
 };
+
+export type TransactionOptions = {
+  hash: string;
+  chain: Chain | string;
+};

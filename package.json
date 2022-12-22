@@ -1,6 +1,6 @@
 {
   "name": "status.finance",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Javascript library for interacting with the Status Finance API",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
