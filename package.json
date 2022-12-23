@@ -1,6 +1,6 @@
 {
   "name": "status.finance",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Javascript library for interacting with the Status Finance API",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -9,7 +9,7 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "watch": "tsc --module commonjs --outDir dist/cjs --watch",
+    "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
   "repository": {
