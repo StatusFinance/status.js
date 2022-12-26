@@ -130,6 +130,36 @@ export interface ActionUniswapV2Swap extends Action {
   }
 }
 
+export interface ActionSeaportOrderCancelled extends Action {
+  orderHash: string
+  offerer: string
+  zone: string
+}
+
+export interface ActionSeaportOrderExecuted extends Action {
+  orderHash: string
+  buyer: string
+  seller: string
+  zone: string
+  items: SeaportItem[]
+  payouts: SeaportPayout[]
+}
+
+export interface SeaportItem {
+  // itemType: number
+  token: string
+  identifier: number
+}
+
+export interface SeaportPayout {
+  // itemType: number
+  token: string
+  receipient: string
+  amount: number
+  value?: number
+  coin?: Coin
+}
+
 export interface ActionUniswapV3Swap extends Action {
   from: string
   receipient: string
@@ -158,7 +188,7 @@ export interface ActionENSRegister extends Action {
   coin?: Coin
 }
 
-export type EVMActions = ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC20Transfer | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC20Transfer | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -177,6 +207,8 @@ export enum EVMActionsType {
   COMPOUND_FINANCE_MINT = 'compound-finance-mint',
   COMPOUND_FINANCE_REDEEM = 'compound-finance-redeem',
   ARGENT_RECOVERY_EXECUTED = 'argent-recovery-executed',
+  SEAPORT_ORDER_CANCELLED = 'seaport-order-cancelled',
+  SEAPORT_ORDER_EXECUTED = 'seaport-order-executed',
 }
 
 export interface EVMTransactionDetails {
