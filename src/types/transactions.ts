@@ -26,6 +26,7 @@ export type Transaction = {
   hash: string;
   status: TransactionStatus;
   data?: TransactionData;
+  cost?: number;
 };
 
 export type TransactionOptions = {
