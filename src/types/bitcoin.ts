@@ -15,12 +15,17 @@ export interface ActionBitcoinTransferIn extends Action {
   coin?: Coin
 }
 
+export interface ActionBitcoinReward extends Action {
+  coin?: Coin
+}
+
 export enum BitcoinActionsType {
   SEND_IN = 'send-in',
   SEND_OUT = 'send-out',
+  REWARD = "reward"
 }
 
-export type BitcoinAction = ActionBitcoinTransferOut | ActionBitcoinTransferIn
+export type BitcoinAction = ActionBitcoinTransferOut | ActionBitcoinTransferIn | ActionBitcoinReward
 
 export interface BitcoinTransactionDetails {
   hash: string;
