@@ -90,6 +90,22 @@ export interface ActionERC20Transfer extends Action {
   coin?: Coin
 }
 
+export interface ActionERC20Mint extends Action {
+  to: string
+  tokenAddress: string
+  amount: number
+  value?: number
+  coin?: Coin
+}
+
+export interface ActionERC20Burn extends Action {
+  from: string
+  tokenAddress: string
+  amount: number
+  value?: number
+  coin?: Coin
+}
+
 export interface ActionWETHWithdraw extends Action {
   from: string
   amount: number
@@ -188,12 +204,14 @@ export interface ActionENSRegister extends Action {
   coin?: Coin
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC20Transfer | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
   ERC20_APPROVAL = 'erc20-approval',
   ERC20_TRANSFER = 'erc20-transfer',
+  ERC20_MINT = 'erc20-mint',
+  ERC20_BURN = 'erc20-burn',
   UNISWAP_V2_SWAP = 'uniswap-v2-swap',
   UNISWAP_V3_SWAP = 'uniswap-v3-swap',
   PANCAKESWAP_SWAP = 'pancakeswap-v2-swap',
