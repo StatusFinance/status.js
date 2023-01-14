@@ -55,18 +55,21 @@ export interface ActionERC721Transfer extends Action {
   to: string
   tokenId: number
   tokenAddress: string
+  name?: string;
 }
 
 export interface ActionERC721Mint extends Action {
   to: string
   tokenId: number
   tokenAddress: string
+  name?: string;
 }
 
 export interface ActionERC721Burn extends Action {
   from: string
   tokenId: number
   tokenAddress: string
+  name?: string;
 }
 
 export interface ActionERC721ApprovalAll extends Action {
@@ -74,13 +77,15 @@ export interface ActionERC721ApprovalAll extends Action {
   spender: string
   approved: boolean
   tokenAddress: string
+  name?: string;
 }
 
 export interface ActionERC721Approval extends Action {
   owner: string
   spender: string
-  tokenAddress: string
   tokenId: number
+  tokenAddress: string
+  name?: string;
 }
 
 export interface ActionERC20Approval extends Action {
