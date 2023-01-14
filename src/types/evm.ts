@@ -50,10 +50,21 @@ export interface ActionCompoundFinanceRedeem extends Action {
   }
 }
 
-
 export interface ActionERC721Transfer extends Action {
   from: string
   to: string
+  tokenId: number
+  tokenAddress: string
+}
+
+export interface ActionERC721Mint extends Action {
+  to: string
+  tokenId: number
+  tokenAddress: string
+}
+
+export interface ActionERC721Burn extends Action {
+  from: string
   tokenId: number
   tokenAddress: string
 }
@@ -204,7 +215,7 @@ export interface ActionENSRegister extends Action {
   coin?: Coin
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -221,6 +232,8 @@ export enum EVMActionsType {
   ERC721_TRANSFER = 'erc721-transfer',
   ERC721_APPROVAL_FOR_ALL = 'erc721-approval-for-all',
   ERC721_APPROVAL = 'erc721-approval',
+  ERC721_MINT = 'erc721-mint',
+  ERC721_BURN = 'erc721-burn',
   ENS_REGISTER = 'ens-register',
   COMPOUND_FINANCE_MINT = 'compound-finance-mint',
   COMPOUND_FINANCE_REDEEM = 'compound-finance-redeem',
