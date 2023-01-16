@@ -162,6 +162,36 @@ export interface ActionUniswapV2Swap extends Action {
   }
 }
 
+export interface ActionUniswapV2LiquidityAdd extends Action {
+  token0: {
+    amount: number
+    tokenAddress: string
+    value?: number
+    coin?: Coin
+  }
+  token1: {
+    amount: number
+    tokenAddress: string
+    value?: number
+    coin?: Coin
+  }
+}
+
+export interface ActionUniswapV2LiquidityRemove extends Action {
+  token0: {
+    amount: number
+    tokenAddress: string
+    value?: number
+    coin?: Coin
+  }
+  token1: {
+    amount: number
+    tokenAddress: string
+    value?: number
+    coin?: Coin
+  }
+}
+
 export interface ActionSeaportOrderCancelled extends Action {
   orderHash: string
   offerer: string
@@ -220,7 +250,7 @@ export interface ActionENSRegister extends Action {
   coin?: Coin
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV3Swap | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -229,6 +259,8 @@ export enum EVMActionsType {
   ERC20_MINT = 'erc20-mint',
   ERC20_BURN = 'erc20-burn',
   UNISWAP_V2_SWAP = 'uniswap-v2-swap',
+  UNISWAP_V2_LIQUIDITY_ADD = 'uniswap-v2-liquidity-add',
+  UNISWAP_V2_LIQUIDITY_REMOVE = 'uniswap-v2-liquidity-remove',
   UNISWAP_V3_SWAP = 'uniswap-v3-swap',
   PANCAKESWAP_SWAP = 'pancakeswap-v2-swap',
   SUSHISWAP_V2_SWAP = 'sushiswap-v2-swap',
