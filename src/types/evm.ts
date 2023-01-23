@@ -208,9 +208,11 @@ export interface ActionSeaportOrderExecuted extends Action {
 }
 
 export interface SeaportItem {
-  // itemType: number
+  itemType: number
   token: string
   identifier: number
+  name?: string
+  amount?: number
 }
 
 export interface SeaportPayout {
