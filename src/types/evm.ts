@@ -252,7 +252,16 @@ export interface ActionENSRegister extends Action {
   coin?: Coin
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionWETHWithdraw
+export interface ActionENSRenew {
+  type: EVMActionsType.ENS_RENEW
+  name: string
+  expires: Date
+  cost: number
+  value: number
+  coin: any
+}
+
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -274,6 +283,8 @@ export enum EVMActionsType {
   ERC721_MINT = 'erc721-mint',
   ERC721_BURN = 'erc721-burn',
   ENS_REGISTER = 'ens-register',
+  ENS_TRANSFER = 'ens-transfer',
+  ENS_RENEW = 'ens-renew',
   COMPOUND_FINANCE_MINT = 'compound-finance-mint',
   COMPOUND_FINANCE_REDEEM = 'compound-finance-redeem',
   ARGENT_RECOVERY_EXECUTED = 'argent-recovery-executed',
