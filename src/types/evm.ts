@@ -243,6 +243,42 @@ export interface ActionUniswapV3Swap extends Action {
   }
 }
 
+export interface ActionUniswapV3LiquidityAdd extends Action {
+  liquidity: number;
+  token0: {
+    amount: number
+    tokenAddress: string
+    decimals: number
+    value?: number
+    coin?: Coin
+  }
+  token1: {
+    amount: number
+    tokenAddress: string
+    decimals: number
+    value?: number
+    coin?: Coin
+  };
+}
+
+export interface ActionUniswapV3LiquidityRemove extends Action {
+  liquidity: number;
+  token0: {
+    amount: number
+    tokenAddress: string
+    decimals: number
+    value?: number
+    coin?: Coin
+  }
+  token1: {
+    amount: number
+    tokenAddress: string
+    decimals: number
+    value?: number
+    coin?: Coin
+  };
+}
+
 export interface ActionENSRegister extends Action {
   owner: string
   name: string
@@ -261,7 +297,7 @@ export interface ActionENSRenew {
   coin: any
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionUniswapV3LiquidityAdd | ActionUniswapV3LiquidityRemove | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -273,6 +309,8 @@ export enum EVMActionsType {
   UNISWAP_V2_LIQUIDITY_ADD = 'uniswap-v2-liquidity-add',
   UNISWAP_V2_LIQUIDITY_REMOVE = 'uniswap-v2-liquidity-remove',
   UNISWAP_V3_SWAP = 'uniswap-v3-swap',
+  UNISWAP_V3_LIQUIDITY_ADD = 'uniswap-v3-liquidity-add',
+  UNISWAP_V3_LIQUIDITY_REMOVE = 'uniswap-v3-liquidity-remove',
   PANCAKESWAP_SWAP = 'pancakeswap-v2-swap',
   SUSHISWAP_V2_SWAP = 'sushiswap-v2-swap',
   WETH_WITHDRAWAL = 'weth-withdrawal',
