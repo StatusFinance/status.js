@@ -8,6 +8,14 @@ export const EVMChains = [
   Chain.POLYGON,
 ]
 
+export interface ERC20Token {
+  amount: number;
+  tokenAddress: string;
+  decimals: number;
+  value?: number;
+  coin?: Coin;
+}
+
 export interface ActionArgentRecoveryExecuted extends Action {
   wallet: string
   recovery: string
@@ -16,38 +24,14 @@ export interface ActionArgentRecoveryExecuted extends Action {
 
 export interface ActionCompoundFinanceMint extends Action {
   from: string
-  fromToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  toToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
+  fromToken: ERC20Token
+  toToken: ERC20Token
 }
 
 export interface ActionCompoundFinanceRedeem extends Action {
   from: string
-  fromToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  toToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
+  fromToken: ERC20Token
+  toToken: ERC20Token
 }
 
 export interface ActionERC721Transfer extends Action {
@@ -146,20 +130,8 @@ export interface ActionEVMTransfer extends Action {
 export interface ActionUniswapV2Swap extends Action {
   from: string
   receipient: string
-  fromToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  toToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
+  fromToken: ERC20Token
+  toToken: ERC20Token
 }
 
 export interface ActionUniswapV2LiquidityAdd extends Action {
@@ -227,56 +199,27 @@ export interface SeaportPayout {
 export interface ActionUniswapV3Swap extends Action {
   from: string
   receipient: string
-  fromToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  toToken: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
+  fromToken: ERC20Token
+  toToken: ERC20Token
+}
+
+export interface ActionUniswapUniversalRouterSwap extends Action {
+  from: string
+  receipient: string
+  fromToken: ERC20Token
+  toToken: ERC20Token
 }
 
 export interface ActionUniswapV3LiquidityAdd extends Action {
   liquidity: number;
-  token0: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  token1: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  };
+  token0: ERC20Token
+  token1: ERC20Token;
 }
 
 export interface ActionUniswapV3LiquidityRemove extends Action {
   liquidity: number;
-  token0: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  }
-  token1: {
-    amount: number
-    tokenAddress: string
-    decimals: number
-    value?: number
-    coin?: Coin
-  };
+  token0: ERC20Token
+  token1: ERC20Token;
 }
 
 export interface ActionENSRegister extends Action {
@@ -297,7 +240,7 @@ export interface ActionENSRenew {
   coin: any
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionUniswapV3LiquidityAdd | ActionUniswapV3LiquidityRemove | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapUniversalRouterSwap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionUniswapV3LiquidityAdd | ActionUniswapV3LiquidityRemove | ActionWETHWithdraw
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -305,6 +248,7 @@ export enum EVMActionsType {
   ERC20_TRANSFER = 'erc20-transfer',
   ERC20_MINT = 'erc20-mint',
   ERC20_BURN = 'erc20-burn',
+  UNISWAP_UNIVERSAL_ROUTER_SWAP = 'uniswap-universal-router-swap',
   UNISWAP_V2_SWAP = 'uniswap-v2-swap',
   UNISWAP_V2_LIQUIDITY_ADD = 'uniswap-v2-liquidity-add',
   UNISWAP_V2_LIQUIDITY_REMOVE = 'uniswap-v2-liquidity-remove',
