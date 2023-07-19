@@ -106,6 +106,37 @@ export interface ActionERC20Burn extends Action {
   coin?: Coin
 }
 
+export interface ActionERC1155Transfer {
+  type: EVMActionsType.ERC1155_TRANSFER,
+  operator: string,
+  from: string,
+  to: string,
+  id: number,
+  value: number,
+  tokenAddress: string,
+  uri?: string
+}
+
+export interface ActionERC1155BatchTransfer {
+  type: EVMActionsType.ERC1155_BATCH_TRANSFER,
+  operator: string,
+  from: string,
+  to: string,
+  ids: number[],
+  values: number[],
+  tokenAddress: string,
+  uri?: string
+}
+
+export interface ActionERC1155ApprovalForAll {
+  type: EVMActionsType.ERC1155_APPROVAL_FOR_ALL,
+  account: string,
+  operator: string,
+  approved: boolean,
+  tokenAddress: string,
+  uri?: string
+}
+
 export interface ActionWETHWithdraw extends Action {
   from: string
   amount: number
@@ -240,7 +271,7 @@ export interface ActionENSRenew {
   coin: any
 }
 
-export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapUniversalRouterSwap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionUniswapV3LiquidityAdd | ActionUniswapV3LiquidityRemove | ActionWETHWithdraw
+export type EVMActions = ActionSeaportOrderCancelled | ActionArgentRecoveryExecuted | ActionCompoundFinanceMint | ActionENSRegister| ActionENSRenew | ActionERC20Approval | ActionERC721ApprovalAll | ActionERC721Approval | ActionERC721Transfer | ActionERC721Mint | ActionERC721Burn | ActionERC20Transfer | ActionERC20Mint | ActionERC20Burn | ActionEVMTransfer | ActionUniswapV2Swap | ActionUniswapUniversalRouterSwap | ActionUniswapV2LiquidityAdd | ActionUniswapV2LiquidityRemove | ActionUniswapV3Swap | ActionUniswapV3LiquidityAdd | ActionUniswapV3LiquidityRemove | ActionWETHWithdraw | ActionERC1155ApprovalForAll | ActionERC1155BatchTransfer | ActionERC1155Transfer
 
 export enum EVMActionsType {
   SEND = 'send',
@@ -264,6 +295,9 @@ export enum EVMActionsType {
   ERC721_APPROVAL = 'erc721-approval',
   ERC721_MINT = 'erc721-mint',
   ERC721_BURN = 'erc721-burn',
+  ERC1155_TRANSFER = 'ERC1155_TRANSFER',
+  ERC1155_BATCH_TRANSFER = 'ERC1155_BATCH_TRANSFER',
+  ERC1155_APPROVAL_FOR_ALL = 'ERC1155_APPROVAL_FOR_ALL',
   ENS_REGISTER = 'ens-register',
   ENS_TRANSFER = 'ens-transfer',
   ENS_RENEW = 'ens-renew',
