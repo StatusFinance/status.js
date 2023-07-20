@@ -49,7 +49,7 @@ export type Transaction = {
   hash: string;
   status: TransactionStatus;
   data?: TransactionData;
-  cost: {
+  cost?: {
     total: number;
     list: {
       name: string;
