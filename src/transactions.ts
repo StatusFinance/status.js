@@ -49,6 +49,13 @@ export type Transaction = {
   hash: string;
   status: TransactionStatus;
   data?: TransactionData;
+  cost: {
+    total: number;
+    list: {
+      name: string;
+      cost: number;
+    };
+  }
 };
 
 export type TransactionOptions = {
